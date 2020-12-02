@@ -1,7 +1,8 @@
-
-import { hot } from 'react-hot-loader'
-import React, { Component, useState, useEffect }  from 'react'
-import './App.css'
+import { hot } from 'react-hot-loader';
+import React, { Component, useState, useEffect }  from 'react';
+import './App.css';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Scroll from './Scroll';
 
 const message = 'Welcome to oko-neutrino'
 const App = () => {
@@ -27,28 +28,7 @@ const App = () => {
   <div className='App'>
     <h1>{message}</h1>
   </div>
-  <table>
-  <tbody> 
-      {news.map((e,i)=>{
-          return(
-              <tr>
-                  <td>
-                      <h2>{i+1}</h2>
-                      <h1 className="title">{e.title}</h1>
-                      <img src={e.thumb} className="image"></img>
-                  
-        
-                      <p className="data">{e.date}</p>
-                      <p className="desc">{e.excerpt}</p>
-                      <a href={e.url} className="url-link">{e.url}</a>
-                  </td>
-              </tr>
-              
-          )
-      })}
-  
-  </tbody>
-</table>
+  <Scroll/>
 </>
   )
 }
