@@ -6,7 +6,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 const Scroll = () =>{
-    const [items, setItems] = useState(5);
+    const [items, setItems] = useState(Array.from({ length: 10 }));
     const [data, setData] = useState([]);
 
 const url = "http://localhost:3000/posts";
@@ -31,8 +31,7 @@ useEffect(() => {
 }, [])
 
 const fetchMoreData = () => {
-    setItems(items+3);
-    // setData(data.slice(0,items))
+    setItems(items.concat(Array.from({ length: 10 })));
   };
 
 console.log("items: ", items);
@@ -42,7 +41,7 @@ console.log(data.slice(0,items));
 
 return(
     <InfiniteScroll
-        dataLength={data.length} //This is important field to render the next data
+        dataLength={items.length} //This is important field to render the next data
         next={fetchMoreData}
         hasMore={true}
         loader={<h4>Loading...</h4>}
@@ -53,7 +52,7 @@ return(
         }>
               <table>
                 <tbody> 
-                    {data.slice(0,items).map((e,i)=>{
+                    {data.slice(0,items.length).map((e,i)=>{
                         return(
                             <tr>
                                 <td>
