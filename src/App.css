@@ -1,11 +1,35 @@
-.App {
-  padding: 20px;
+@import 'reset.css';
+
+#root{
+  background-color: rgba(238, 237, 241, 0.932);
 }
-.image{
-  height: 100px;
-  width: 100px;
+.main-content{
+  
+  margin: 0 auto;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
 }
 
-table td{
-  border: 1px solid gray;
+.infinite-scroll-component,
+.infinite-scroll-component__outerdiv{
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.card{
+  
+  width: 300px;
+  margin:2%;
+}
+
+.card-body{
+  background-color: white;
+  border-radius: 0.25rem;
 }

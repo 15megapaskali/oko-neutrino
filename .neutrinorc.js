@@ -10,7 +10,9 @@ module.exports = {
     standard(),
     react({
       html: {
-        title: 'oko-neutrino'
+        title: 'oko.press',
+
+
       }
     }),
     jest(),

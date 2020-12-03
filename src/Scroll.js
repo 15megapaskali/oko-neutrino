@@ -1,12 +1,16 @@
 import React, { Component, useState, useEffect }  from 'react';
+
 import InfiniteScroll from 'react-infinite-scroll-component';
+require('jquery');
+require('bootstrap');
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 
 
 
 const Scroll = () =>{
-    const [items, setItems] = useState(Array.from({ length: 10 }));
+    const [items, setItems] = useState(Array.from({ length: 6 }));
     const [data, setData] = useState([]);
 
 const url = "http://localhost:3000/posts";
@@ -31,7 +35,7 @@ useEffect(() => {
 }, [])
 
 const fetchMoreData = () => {
-    setItems(items.concat(Array.from({ length: 10 })));
+    setItems(items.concat(Array.from({ length: 3 })));
   };
 
 console.log("items: ", items);
@@ -44,34 +48,35 @@ return(
         dataLength={items.length} //This is important field to render the next data
         next={fetchMoreData}
         hasMore={true}
-        loader={<h4>Loading...</h4>}
+        loader={<div className="text-center">
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>}
         endMessage={
             <p style={{ textAlign: 'center' }}>
             <b>Yay! You have seen it all</b>
             </p>
         }>
-              <table>
-                <tbody> 
+                
+                
                     {data.slice(0,items.length).map((e,i)=>{
                         return(
-                            <tr>
-                                <td>
-                                    <h2>{i+1}</h2>
-                                    <h1 className="title">{e.title}</h1>
-                                    <img src={e.thumb} className="image"></img>
-                                
-                        
-                                    <p className="data">{e.date}</p>
-                                    <p className="desc">{e.excerpt}</p>
-                                    <a href={e.url} className="url-link">{e.url}</a>
-                                </td>
-                            </tr>
+                            <div className="card">
+                                <img src={e.thumb} className="card-img-top" alt={e.thumb}></img>
+                                <div class="card-body">
+                                <h5 className="card-title" onClick={e.url}>{e.title}</h5>
+                                    <p className="card-text">{e.excerpt}</p>
+                                    <a href={e.url} className="card-link">Czytaj więcej</a>
+                                    <p className="card-text"><small className="text-muted">dodano: {e.date}</small></p>
+                                </div>
+                            </div>
+                           
                             
                         )
                     })}
                 
-                </tbody>
-            </table>
+                
     </InfiniteScroll>
 )
 }
