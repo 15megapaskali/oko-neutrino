@@ -19,11 +19,11 @@ sudo npm install -g json-server // sudo required because global (-g) installatio
 ## Usage
 
 
-Go to the 'JSON db' directory. 
+Go to the 'JSON db' directory and run json-server. 
 
 ```bash
 cd 'JSON db'
-json-server --watch db.json // You may need to run as administrator 'sudo json-server --watch db.json'
+json-server --watch db.json // You may need to run as administrator/root 'sudo json-server --watch db.json'
 ```
 
 Open a new terminal (console) window in the project root directory.
