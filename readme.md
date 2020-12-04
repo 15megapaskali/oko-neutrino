@@ -23,7 +23,7 @@ Go to the 'JSON db' directory.
 
 ```bash
 cd 'JSON db'
-json-server --watch db.json // You may need to run as administrator - add 'sudo json-server --watch db.json'
+json-server --watch db.json // You may need to run as administrator 'sudo json-server --watch db.json'
 ```
 
 Open a new terminal (console) window in the project root directory.
